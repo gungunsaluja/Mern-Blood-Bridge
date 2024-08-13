@@ -4,6 +4,6 @@ const { testController } = require("../Controllers/testControllers");
 const router = express.Router();
 
 // routes
-router.get('/test',testController)
+router.get('/',testController)
 
 module.exports = router;
