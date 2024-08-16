@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
                 return true;
             }
             return false;
-        }
+        },
 
     },
     hospitalName:{
@@ -47,9 +47,6 @@ const userSchema = new mongoose.Schema({
         required:[true,"password is required"],
     },
     website:{
-        type:String,
-    },
-    address:{
         type:String,
     },
     address:{
