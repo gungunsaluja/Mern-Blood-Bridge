@@ -50,6 +50,16 @@ const loginController = async (req,res) =>{
                 message:'Invalid Credentials'
             })
         }
+        // check role
+        if(user.role!=req.body.role){
+            return res.status(500).send({
+                success:false,
+                message:'role does not match',
+            });
+        }
+        {
+
+        }
         // compare password
         const comparePassword = await bcrypt.compare(req.body.password,user.password);
         if(!comparePassword)
@@ -91,9 +101,10 @@ const currentUserController = async(req,res) =>{
         return res.status(200).send({
             success:true,
             message:'User fetched Successfully',
-            user
+            user,
         })
     }
+    // 1:37 par req bnani hai
     catch(error)
     {
         console.log(error)

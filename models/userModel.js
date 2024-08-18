@@ -3,8 +3,10 @@ const userSchema = new mongoose.Schema({
     role:{
         type:String,
         required:[true,'role is required'],
-        enum:['admin','organisation','user','hospital']
+        enum:['admin','organisation','donar','hospital']
     },
+    // 1:45 pe user will be changed to donar
+    
     name:{
         type:String,
         required:function()
