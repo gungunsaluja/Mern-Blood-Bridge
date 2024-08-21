@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import InputType from "./InputType";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { handleLogin } from "../../../Services/authService";
+import { handleRegister } from "../../../Services/authService";
 
 const Form = ({ submitButton, formTitle, formType }) => {
   const [email, setEmail] = useState("");
@@ -16,7 +18,24 @@ const Form = ({ submitButton, formTitle, formType }) => {
 
   return (
     <div>
-      <form>
+      <form
+        onSubmit={(e) => {
+          if (formType === "login") return handleLogin(e, email, password);
+          else if (formType === "register")
+            return handleRegister(
+              e,
+              name,
+              role,
+              email,
+              password,
+              organisationName,
+              hospitalName,
+              website,
+              address,
+              phone
+            );
+        }}
+      >
         <h1 className="text-center">{formTitle}</h1>
         <hr></hr>
         <div className="d-flex mb-3">
@@ -145,9 +164,8 @@ const Form = ({ submitButton, formTitle, formType }) => {
                       onChange={(e) => setOrganisationName(e.target.value)}
                     ></InputType>
                   )}
-                  {
-                    role=== 'hospital' && (
-                      <InputType
+                  {role === "hospital" && (
+                    <InputType
                       labeltext={"Hospital Name"}
                       labelfor={"forhospitalName"}
                       inputtype={"text"}
@@ -155,12 +173,7 @@ const Form = ({ submitButton, formTitle, formType }) => {
                       value={hospitalName}
                       onChange={(e) => setHospitalName(e.target.value)}
                     ></InputType>
-
-                    )
-                  }
-
-
-                
+                  )}
 
                   <InputType
                     labeltext={"website"}
@@ -194,22 +207,19 @@ const Form = ({ submitButton, formTitle, formType }) => {
           }
         })()}
 
-
         <div className="d-flex flex-row justify-content-between">
-
-          {formType === 'login'?(  
-            <p>Not registered yet ? Register
+          {formType === "login" ? (
+            <p>
+              Not registered yet ? Register
               {/* ek page se dusre page par jump karte h using link tag without refreshing the page */}
-              <Link to = "/register">Here !</Link>
+              <Link to="/register"> Here !</Link>
             </p>
-          ):(
-            <p>Already User please
-              <Link to = "/login">Login !</Link>
+          ) : (
+            <p>
+              Already User please
+              <Link to="/login"> Login !</Link>
             </p>
-
-          )
-
-          }
+          )}
           <button className="btn btn-primary" type="submit">
             {submitButton}
           </button>
