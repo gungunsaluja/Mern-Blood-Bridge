@@ -12,7 +12,8 @@ const Register = () => {
         <div className = 'col-md-4 form-container'>
             <Form formTitle={'Register'} 
             submitButton = {'Register'} 
-            formType={'register'}></Form>
+            formType={'register'}
+            ></Form>
         </div>
      </div>
     </div>
