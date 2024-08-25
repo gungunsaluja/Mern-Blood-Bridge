@@ -1,4 +1,7 @@
 import React from 'react'
+import store from '../Redux/store'
+import { userLogin } from '../Redux/features/auth/authActions';
+
 
 export const handleLogin = (e,email,password,role) =>{
     e.preventDefault();
@@ -8,6 +11,7 @@ export const handleLogin = (e,email,password,role) =>{
         }
         console.log('login',e,email,password,role);
     }
+    store.dispatch(userLogin({email,password,role}))
     catch(error){
         console.log(error);
     }
