@@ -55,10 +55,12 @@ export const userRegister = createAsyncThunk(
                 hospitalName,
                 website
             })
-            if(data.success)
+            if(data?.success)
             {
-                toast.success(data.message)
-                
+                alert("User ")
+                toast.success("User Registered Successfully");
+
+                window.location.replace('/login');
             }
 
         }
