@@ -23,7 +23,8 @@ const ProtectedRoute = ({children}) => {
         }
     }
     useEffect(()=>{
-        getUser()
+        getUser();
+
     })
     if(localStorage.getItem('token'))
     {
@@ -31,7 +32,6 @@ const ProtectedRoute = ({children}) => {
     }
     else{
         return <Navigate to = "/login"></Navigate>
-
     }
   
 }
