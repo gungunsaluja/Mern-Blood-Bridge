@@ -7,6 +7,7 @@ const Register = () => {
   const {loading,error}  = useSelector (state=>state.auth)
   return (
     <div>
+      {error && <span>{alert(error)}</span>}
       {
         loading?(<Spinner></Spinner>):(
 

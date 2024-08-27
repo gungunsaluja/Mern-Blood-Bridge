@@ -1,11 +1,19 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Spinner from '../Component/shared/Spinner';
+import Layout from '../Component/shared/Layout/Layout';
 
 const HomePage = () => {
+  const {loading,error} = useSelector(state=>state.auth);
+
   return (
-    <div>
+    <Layout>
+      {error && <span>{alert(error)}</span>}
+      {loading?(<Spinner></Spinner>):(<>
+      <h1>Home page</h1></>)}
       
-      <h1>Home Page</h1>
-    </div>
+      
+    </Layout>
   )
 }
 
