@@ -26,7 +26,7 @@ const Header = () => {
                     <li className="nav-item mx-3">
                         <p className="nav-link">
                             <BiUserCircle></BiUserCircle>
-                            Welcome{user?.name}
+                            Welcome{user?.name || user?.hospitalName || user?.organisationName}
                         </p>
 
                     </li>

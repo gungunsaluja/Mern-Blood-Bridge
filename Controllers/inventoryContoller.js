@@ -3,9 +3,9 @@ const { sortUserPlugins } = require('vite');
 const inventoryModel = require('../models/inventoryModel');
 const userModel = require('../models/userModel');
 
-const createInventoryController =async (req,res)=>{
-    try{
-        const {email,inventoryType} = req.body;
+const createInventoryController = async (req,res)=>{
+    try {
+        const { email, inventoryType} = req.body;
         // validation
         const user = await userModel.findOne({email})
       
@@ -13,9 +13,9 @@ const createInventoryController =async (req,res)=>{
         {
              throw new Error('User Not Found')
         }
-        if(inventoryType === 'in' && user.role !=='donar'){
-             throw new Error('Not a donar account')
-        }
+        // if(inventoryType === 'in' && user.role !=='donar'){
+        //      throw new Error('Not a donar account')
+        // }
         if(inventoryType === 'out' && user.role!=='hospital')
         {
              throw new Error('Not a hospital')
