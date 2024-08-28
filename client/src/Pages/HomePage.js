@@ -1,4 +1,6 @@
 import React from 'react'
+import React,{useEffect,useState} from "react";
+
 import { useSelector } from 'react-redux'
 import Spinner from '../Component/shared/Spinner';
 import Layout from '../Component/shared/Layout/Layout';
@@ -6,6 +8,24 @@ import Model from '../Component/shared/Model/Model';
 
 const HomePage = () => {
   const {loading,error} = useSelector(state=>state.auth);
+  const {data,setData} = useState()
+  // get function
+  const getBloodRecords = async()=>{
+    try{
+
+      const {data} = await API.get('/inventory/get-inventory')
+      if(data?.success)
+      {
+        setData(data?.inventory)
+
+      }
+    }
+
+    catch(error)
+    {
+      console.log(error);
+    }
+  }
 
   return (
     <Layout>
