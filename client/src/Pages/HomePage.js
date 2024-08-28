@@ -35,6 +35,7 @@ const HomePage = () => {
     <Layout>
       {error && <span>{alert(error)}</span>}
       {loading?(<Spinner></Spinner>):(<>
+      <div className="container"></div>
 
 
       <h4 className = 'ms-4'
@@ -48,19 +49,27 @@ const HomePage = () => {
       <table className="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Blood Group</th>
+      <th scope="col">Inventory Type</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Donar Email</th>
+      <th scope="col">Time & Date</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    {data?.map((record)=>(
+      <tr key = {record._id}>
+        <td>{record.bloodGroup}</td>
+        <td>{record.inventoryType}</td>
+        <td>{record.quantity}</td>
+        <td>{record.donarEmail}</td>  
+        <td>{record.createdAt}</td>
       <th scope="row">1</th>
       <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
     </tr>
+      
+    ))}
+    
     <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
