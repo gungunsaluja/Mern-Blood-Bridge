@@ -5,7 +5,7 @@ import { useSelector,useEffect } from 'react-redux'
 import Spinner from '../Component/shared/Spinner';
 import Layout from '../Component/shared/Layout/Layout';
 import Model from '../Component/shared/Model/Model';
-
+import moment from 'moment';
 const HomePage = () => {
   const {loading,error} = useSelector(state=>state.auth);
   const {data,setData} = useState([]);
@@ -63,7 +63,7 @@ const HomePage = () => {
         <td>{record.inventoryType}</td>
         <td>{record.quantity}</td>
         <td>{record.donarEmail}</td>  
-        <td>{record.createdAt}</td>
+        <td>{moment(record.createdAt).format('DD/MM/YYYY' hh:mm)}</td> 
       <th scope="row">1</th>
       <td>Mark</td>
     </tr>
