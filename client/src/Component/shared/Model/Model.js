@@ -39,6 +39,13 @@ const Model = () => {
         }
         catch(error)
         {
+          alert(error.response.data.message);
+          console.log(error);
+          window.location.reload();
+          
+
+
+
 
         }
     }
@@ -78,7 +85,9 @@ const Model = () => {
           <button type="button" className="btn btn-primary" onClick = {handleModalSubmit}>Submit</button>
         </div>
         <select className="form-select" aria-label="Default select example" onChange={(e)=> setBloodGroup(e.target.value)}>
-  <option selected>Open this select menu</option>
+  <option defaultValue={'Open this select menu'}>
+  Open this select menu
+  </option>
   <option value={'O+'}>O+</option>
   <option value={'O-'}>O-</option>
   <option value={'AB+'}>AB+</option>

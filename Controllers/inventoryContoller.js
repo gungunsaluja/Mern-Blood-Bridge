@@ -40,13 +40,54 @@ const createInventoryController = async (req,res)=>{
                     }
 
                 }
-            ])
+            ]);
+          
             const totalInOfRequestedBlood = await inventoryModel.aggregate([
                 console.log('Total In',totalInOfRequestedBlood)
 
             ])
+
+            const totalIn = totalInRequestBlood[0]?.total || 0;
+            const totalOutOfRequestedBloodGroup = await inventoryModel.aggregate([
+                {
+                    $match:{
+                        organisation,
+                        inventoryType:'out',
+                        bloodGroup:requestedBloodGroup
+
+                    }
+                },
+                {
+                    $group:{
+                        
+                    _id:'$bloodGroup',
+                    total:{$sum:'$quantity'}
+                }
+            }
+            ]);
+            const totalOut = totalOutOfRequestedBloodGroup[0]?.total || 0;
+
+            // in and out calc
+            const availableQuantityOfBloodGroup = totalIn-totalOut;
+
+            // qauntity validation
+            if(availableQuantityOfBloodGroup<requestedQuantityOfBlood)
+            {
+                return res.status(500).send({
+                    success:false,
+                    message:`Only ${availableQuantityOfBloodGroup}ML of ${totalInOfRequestedBlood.toUpperCase()} is available`
+                })
+            }
+            req.body.hospital = user?._id;
+
+
+
+
+
+
             
     
+
 
         }
         // save record

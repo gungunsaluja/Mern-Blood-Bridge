@@ -57,13 +57,14 @@ const HomePage = () => {
     </tr>
   </thead>
   <tbody>
+    {/* 6:11 */}
     {data?.map((record)=>(
       <tr key = {record._id}>
         <td>{record.bloodGroup}</td>
         <td>{record.inventoryType}</td>
-        <td>{record.quantity}</td>
+        <td>{record.quantity}(ML)</td>
         <td>{record.donarEmail}</td>  
-        <td>{moment(record.createdAt).format('DD/MM/YYYY' hh:mm)}</td> 
+        <td>{moment(record.createdAt).format('DD/MM/YYYY hh:mm')}</td> 
       <th scope="row">1</th>
       <td>Mark</td>
     </tr>
