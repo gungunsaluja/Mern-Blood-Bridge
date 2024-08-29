@@ -21,7 +21,7 @@ const Model = () => {
               return alert("Please Provide all fields");
             }
             const {data} = await API.post('/inventory/create-inventory',{ 
-              donarEmail,
+              
               email:user?.email
               ,organisation:user?.id,
               inventoryType,
@@ -99,8 +99,8 @@ const Model = () => {
   
 
 </select>
-<InputType labelText = {'Donar Email'} labelFor = {'donarEmail'} InputType = {'email'} value = {donarEmail}
-onChange = {(e)=>{setdonarEmail(e.target.value)}}/>
+<InputType labelText = {'Donar Email'} labelFor = {'donarEmail'} InputType = {'email'} value = {email}
+onChange = {(e)=>{setEmail(e.target.value)}}/>
 
 
 <InputType labelText = {'Quantity'} labelFor = {'quantity'} InputType = {'Number'} value = {quantity}
