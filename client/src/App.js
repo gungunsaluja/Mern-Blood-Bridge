@@ -8,12 +8,17 @@ import Register from './Pages/Auth/Register';
 import 'react-toastify/dist/ReactToastify.css';
 import ProtectedRoute from './Component/Routes/ProtectedRoute';
 import PublicRoute from './Component/Routes/PublicRoute';
+import Donar from './Pages/Dashboard/Donar';
 
 function App() {
   return (
     <div>
       <ToastContainer/>
       <Routes>
+        <Route path = "/donar" element = {<ProtectedRoute><Donar></Donar></ProtectedRoute>}>
+
+
+        </Route>
         <Route path = '/' element ={<ProtectedRoute>
           <HomePage/>
         </ProtectedRoute>} />

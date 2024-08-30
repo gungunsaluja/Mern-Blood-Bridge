@@ -142,4 +142,24 @@ const getInventoryController = async(req,res) =>{
         })
     }
 }
-module.exports = {createInventoryController ,getInventoryController} ;
+// get donar records
+const getDonarsControllers = async(req,res)=>
+{
+
+    try{
+
+    }
+    catch(error){
+        console.log(error);
+        return res.status(500).send({
+            success:false,
+            message:'Error in Donar records',
+            error
+
+        })
+
+    }
+}
+
+module.exports = {createInventoryController ,getInventoryController,
+getDonarsControllers} ;
