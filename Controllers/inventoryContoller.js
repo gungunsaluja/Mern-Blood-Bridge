@@ -81,15 +81,6 @@ const createInventoryController = async (req,res)=>{
             }
             req.body.hospital = user?._id;
 
-
-
-
-
-
-            
-    
-
-
         }
         else{
                 req.body.donar = user?._id;
@@ -147,6 +138,21 @@ const getDonarsControllers = async(req,res)=>
 {
 
     try{
+
+        const organisation = req.body.userId ;
+        // find donars
+        const donarId = await inventoryModel.distinct("donar",{
+            organisation,
+        });
+        // console.log(donarId);
+        const donars = await userModel.find({_id:{$in:donarId}})
+        return res.status(200).send({
+            success:true,
+            message:"Donar Record Fetched Successfully";
+            donars,
+
+        });
+
 
     }
     catch(error){
