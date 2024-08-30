@@ -166,6 +166,36 @@ const getDonarsControllers = async(req,res)=>
 
     }
 }
+const getHospitalController = async (req,res)=>{
+    try{
+        const organisation = reqbody.userId
+        // get hospital id
+        const hospitalId = await inventoryModel.distinct('hospital',{organisation})
+        // find hospital 
+        const hospital = await userModel.find({
+            _id:{$in :hospitalId}
+        })
+
+        return res.status(200).send({
+            success:true,
+            message:'Hospital Data Fetched Successfully',
+            hospital
+        })
+
+    }
+    catch(error)
+    {
+        console.log(error);
+        return res.status(500).send({
+            success:false,
+            message:'Error In get Hospital APi'
+
+        });
+
+    }
+
+}
 
 module.exports = {createInventoryController ,getInventoryController,
-getDonarsControllers} ;
+getDonarsControllers,
+getHospitalController} ;
