@@ -18,7 +18,7 @@ const createInventoryController = async (req,res)=>{
         // if(inventoryType === 'in' && user.role !=='donar'){
         //      throw new Error('Not a donar account')
         // }
-        if(inventoryType === 'out' && user.role!=='hospital')
+        if(inventoryType === 'out')
         {
              throw new Error('Not a hospital')
         }
@@ -29,7 +29,8 @@ const createInventoryController = async (req,res)=>{
             const organisation = new mongoose.Types.ObjectId(req.body.userId) ;
             // calculate blood
             const totalInOfRequestedBlood = await inventoryModel.aggregate([
-                {$match:{
+                {
+                    $match:{
                     organisation,
                     inventoryType:'in',
                     bloodGroup:requestedBloodGroup
@@ -76,7 +77,7 @@ const createInventoryController = async (req,res)=>{
                 return res.status(500).send({
                     success:false,
                     message:`Only ${availableQuantityOfBloodGroup}ML of ${totalInOfRequestedBlood.toUpperCase()} is available`
-                })
+                });
             }
             req.body.hospital = user?._id;
 
@@ -90,9 +91,15 @@ const createInventoryController = async (req,res)=>{
 
 
         }
+        else{
+                req.body.donar = user?._id;
+    
+            
+    
+        }
         // save record
-        // const inventory = new inventoryModel(req.body)
-        // await inventory.save()
+        const inventory = new inventoryModel(req.body)
+        await inventory.save()
         return res.status(201).send({
             success:true,
             message:'New Blood Record Added'
