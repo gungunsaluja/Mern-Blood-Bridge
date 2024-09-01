@@ -1,7 +1,7 @@
 export const userMenu = [
     {
         name:'Inventory',
-        path:'',
+        path:'/',
         icon:"fa-solid fa-warehouse"
 
     },
@@ -14,5 +14,10 @@ export const userMenu = [
         name:'Hospital',
         path:'/hospital',
         icon:"fa-solid fa-hospital",
+    },
+    {
+        name:'Organisation',
+        path:'/organisation',
+        icon:<i class = "fa-sharp fa-solid fa-building-ngo"></i>,
     }
 ]

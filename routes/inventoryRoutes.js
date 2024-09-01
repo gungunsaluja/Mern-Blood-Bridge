@@ -16,11 +16,13 @@ router.get('/get-inventory', authMiddleware,getInventoryController)
 router.get("/get-donars",authMiddleware,getDonarsControllers);
 // get hospital records
 router.get("/get-hospital",authMiddleware,);
+router.get("/get-organisation",authMiddleware,getOrganisationController)
 
 module.exports = {
     createInventoryController,
     getInventoryController,
     getDonarsControllers,
-    getHosp
+    getHosp,
+    getOrganisationController
 };
 

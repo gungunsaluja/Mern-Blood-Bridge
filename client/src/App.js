@@ -11,6 +11,8 @@ import PublicRoute from './Component/Routes/PublicRoute';
 import Donar from './Pages/Dashboard/Donar';
 import Hospital from './Pages/Dashboard/Hospital';
 
+import OrganisationPage from './Pages/Dashboard/OrganisationPage';
+
 
 function App() {
   return (
@@ -33,6 +35,11 @@ function App() {
           <PublicRoute>
               <Login/>
           </PublicRoute>
+          } />
+           <Route path = "/organisation" element = {
+          <ProtectedRoute>
+              <OrganisationPage></OrganisationPage>
+          </ProtectedRoute>
           } />
         <Route path = "/register" element = {
           
