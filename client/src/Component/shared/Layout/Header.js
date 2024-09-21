@@ -1,12 +1,16 @@
 import React from 'react'
 import { BiSolidDonateBlood ,BiUserCircle} from "react-icons/bi";
+// import { useSelector } from 'react-redux';
+import { useNavigate,useLocation,Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 
 
 const Header = () => {
     const {user} = useSelector((state)=>state.auth);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const location = useLocation();
+     
 
     // logout handler
     const handleLogout = ()=>{
@@ -26,10 +30,25 @@ const Header = () => {
                     <li className="nav-item mx-3">
                         <p className="nav-link">
                             <BiUserCircle></BiUserCircle>
-                            Welcome{user?.name || user?.hospitalName || user?.organisationName}
+                            Welcome{" "}{user?.name || user?.hospitalName || user?.organisationName}
+                            <span className = "badge bg-secondary">{user?.role}</span>
                         </p>
-
                     </li>
+                    {
+                        location.pathname === "/" ? (
+                            <li className="nav-item mx-3">
+                        <Link to = "/analytics" className="nav-link">
+                        Analytics
+                        </Link>
+                    </li>
+                            
+                        ): (
+
+                            <li className = "nav-item mx-3">
+                                <Link to = "/" className = "nav-link">Home</Link>
+                            </li>
+                        )
+                    }
                    <li className='nav-items flex-row'>
                     <button className = "btn btn-danger" onClick = {handleLogout}>Logout</button>
 

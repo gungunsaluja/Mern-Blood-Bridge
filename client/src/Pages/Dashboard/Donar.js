@@ -2,7 +2,7 @@ import React,{useEffect,useState} from 'react'
 import Layout from '../../Component/shared/Layout/Layout'
 
 const Donar = () => {
-    const [data,setData] = useState({});
+    const [data,setData] = useState([]); 
     // find donar records
     const getDonars = async ()=>{
         try{
@@ -47,7 +47,7 @@ const Donar = () => {
         <td>{record.name || record.orgainsation + " (ORG)"}</td>
         <td>{record.email}</td>
         {/* <td>{record.quantity}(ML)</td> */}
-        <td>{record.email}</td>  
+        {/* <td>{record.email}</td>   */}
         <td>{moment(record.createdAt).format('DD/MM/YYYY hh:mm')}</td> 
       <th scope="row">1</th>
       <td>Mark</td>

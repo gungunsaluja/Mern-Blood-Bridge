@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../../Component/shared/Layout/Layout'
+import API from "../../Services/API"
+
 import moment from 'moment';
 const Hospital = () => {
     const [data,setData] = useState([]);

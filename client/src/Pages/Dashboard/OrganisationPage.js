@@ -1,19 +1,39 @@
 import React from 'react'
 import Layout from '../../Component/shared/Layout/Layout'
 import moment from 'moment';
+import { useSelector } from 'react-redux';
 import OrganisationPage from './OrganisationPage';
 const OrganisationPage = () => {
+  const {user} = useSelector(state=>state.auth)
     const [data,setData] = useState([]);
     const getOrg = async()=>{
         try {
-            
-        const {data} = await API.get("/inventory/get-organisation");
+          if(user?.role==='donar')
+          {
+            const {data} = await API.get("/inventory/get-organisation");
     
-    // find donar records
-    if(data?.success)
-    {
-        setData(data?.hospital);
-    }
+            // find donar records
+            if(data?.success)
+            {
+                setData(data?.organisation);
+            }
+
+          }
+          if(user?.role==='hospital')
+            {
+              const {data} = await API.get("/inventory/get-organisation-for-hospital");
+      
+              // find donar records
+              if(data?.success)
+              {
+                  setData(data?.organisation);
+              }
+  
+            }
+
+         
+            
+      
 }
     catch(error)
     {
@@ -22,7 +42,8 @@ const OrganisationPage = () => {
 };
 useEffect(()=>{
     getOrg();
-},[]);
+},[user]);
+
   return (
     <Layout>
         <table className="table">
