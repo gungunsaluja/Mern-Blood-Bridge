@@ -15,6 +15,9 @@ import OrganisationPage from "./Pages/Dashboard/OrganisationPage";
 import Consumer from "./Pages/Dashboard/Consumer";
 import Donation from "./Pages/Donation";
 import Analytics from "./Pages/Dashboard/Analytics";
+import DonarList from "./Pages/Admin/DonarList";
+import HospitalList from "./Pages/Admin/HospitalList";
+import OrgList from "./Pages/Admin/OrgList";
 
 function App() {
   return (
@@ -72,6 +75,43 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Routes>
+        <Route
+          path="/admin"
+          element={
+            <PublicRoute>
+              <AdminHome />
+            </PublicRoute>
+          }
+        />
+
+          <Route path = "/donar-list" element={<ProtectedRoute>
+            <DonarList></DonarList>
+          </ProtectedRoute>}>
+
+
+          </Route>
+          <Route path = "/org-list" element = {
+            <ProtectedRoute>
+              <OrgList></OrgList>
+            </ProtectedRoute>
+          }></Route>
+
+        </Routes>
+
+
+
+        <Routes>
+
+<Route path = "/hospital-list" element={<ProtectedRoute>
+  <HospitalList></HospitalList>
+</ProtectedRoute>}>
+
+
+</Route>
+
+</Routes>
         <Route path = "/analytics"
         element = {
           <ProtectedRoute>

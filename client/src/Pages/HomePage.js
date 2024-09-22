@@ -1,5 +1,6 @@
 import React from 'react'
 import React,{useEffect,useState} from "react";
+import { useNavigate } from 'react-router-dom';
 
 import { useSelector,useEffect } from 'react-redux'
 import Spinner from '../Component/shared/Spinner';
@@ -9,6 +10,7 @@ import moment from 'moment';
 const HomePage = () => {
   const {loading,error} = useSelector(state=>state.auth);
   const {data,setData} = useState([]);
+  const navigate = useNavigate();
   // get function
   const getBloodRecords = async()=>{
     try{
@@ -24,15 +26,16 @@ const HomePage = () => {
     {
       console.log(error);
     }
+  };
 
     useEffect(()=>{
       getBloodRecords();
     },[]);
-   
-  }
+  
 
   return (
     <Layout>
+      {user?.role === 'admin' && navigate("/admin")}
       {error && <span>{alert(error)}</span>}
       {loading?(<Spinner></Spinner>):(<>
       <div className="container"></div>
