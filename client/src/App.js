@@ -1,16 +1,13 @@
-import logo from "./logo.svg";
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import Login from "./Pages/Auth/Login";
-import { ToastContainer } from "react-toastify";
 import Register from "./Pages/Auth/Register";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProtectedRoute from "./Component/Routes/ProtectedRoute";
 import PublicRoute from "./Component/Routes/PublicRoute";
 import Donar from "./Pages/Dashboard/Donar";
 import Hospital from "./Pages/Dashboard/Hospital";
-
 import OrganisationPage from "./Pages/Dashboard/OrganisationPage";
 import Consumer from "./Pages/Dashboard/Consumer";
 import Donation from "./Pages/Donation";
@@ -18,39 +15,93 @@ import Analytics from "./Pages/Dashboard/Analytics";
 import DonarList from "./Pages/Admin/DonarList";
 import HospitalList from "./Pages/Admin/HospitalList";
 import OrgList from "./Pages/Admin/OrgList";
-
+import AdminHome from "./Pages/Admin/AdminHome";
 function App() {
   return (
-    <div>
+    <>
       <ToastContainer />
-
       <Routes>
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donar-list"
+          element={
+            <ProtectedRoute>
+              <DonarList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/hospital-list"
+          element={
+            <ProtectedRoute>
+              <HospitalList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/org-list"
+          element={
+            <ProtectedRoute>
+              <OrgList />
+            </ProtectedRoute>
+          }
+        />
+
         <Route
           path="/hospital"
           element={
             <ProtectedRoute>
-              <Hospital></Hospital>
+              <Hospital />
             </ProtectedRoute>
           }
-        ></Route>
+        />
+        <Route
+          path="/analytics"
+          element={
+            <ProtectedRoute>
+              <Analytics />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/consumer"
+          element={
+            <ProtectedRoute>
+              <Consumer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/donation"
+          element={
+            <ProtectedRoute>
+              <Donation />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/orgnaisation"
+          element={
+            <ProtectedRoute>
+              <OrganisationPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/donar"
           element={
             <ProtectedRoute>
-              <Donar></Donar>
+              <Donar />
             </ProtectedRoute>
           }
-        >
-          <Route path="/consumer">
-            element ={" "}
-            {
-              <ProtectedRoute>
-                <Consumer></Consumer>
-              </ProtectedRoute>
-            }
-          </Route>
-          <Route path="/donation" element={<Donation></Donation>}></Route>
-        </Route>
+        />
         <Route
           path="/"
           element={
@@ -68,59 +119,6 @@ function App() {
           }
         />
         <Route
-          path="/organisation"
-          element={
-            <ProtectedRoute>
-              <OrganisationPage></OrganisationPage>
-            </ProtectedRoute>
-          }
-        />
-
-        <Routes>
-        <Route
-          path="/admin"
-          element={
-            <PublicRoute>
-              <AdminHome />
-            </PublicRoute>
-          }
-        />
-
-          <Route path = "/donar-list" element={<ProtectedRoute>
-            <DonarList></DonarList>
-          </ProtectedRoute>}>
-
-
-          </Route>
-          <Route path = "/org-list" element = {
-            <ProtectedRoute>
-              <OrgList></OrgList>
-            </ProtectedRoute>
-          }></Route>
-
-        </Routes>
-
-
-
-        <Routes>
-
-<Route path = "/hospital-list" element={<ProtectedRoute>
-  <HospitalList></HospitalList>
-</ProtectedRoute>}>
-
-
-</Route>
-
-</Routes>
-        <Route path = "/analytics"
-        element = {
-          <ProtectedRoute>
-            <Analytics></Analytics>
-          </ProtectedRoute>
-        }>
-
-        </Route>
-        <Route
           path="/register"
           element={
             <PublicRoute>
@@ -129,7 +127,7 @@ function App() {
           }
         />
       </Routes>
-    </div>
+    </>
   );
 }
 

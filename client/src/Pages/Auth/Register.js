@@ -1,7 +1,7 @@
 import React from "react";
-import Form from "../../components/shared/Form/Form";
+import Form from "../../Component/shared/form/Form";
 import { useSelector } from "react-redux";
-import Spinner from "../../components/shared/Spinner";
+import Spinner from "../../Component/shared/Spinner";
 
 const Register = () => {
   const { loading, error } = useSelector((state) => state.auth);

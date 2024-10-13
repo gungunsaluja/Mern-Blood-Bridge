@@ -1,36 +1,43 @@
-import React from 'react'
-import { getDonarrListController } from '../../../../Controllers/adminControllers';
-import authMiddleware from '../../../../middlewares/authMiddleware';
-import { getOrgListController } from '../Controllers/adminControllers';
-import { getHospitalListController } from '../Controllers/adminControllers';
-const express = require('express')
-const adminMiddleware = require("../middlewares/AdminMiddleware")
-// router object
+const express = require("express");
+const authMiddelware = require("../middlewares/authMiddelware");
+const {
+  getDonarsListController,
+  getHospitalListController,
+  getOrgListController,
+  deleteDonarController,
+} = require("../controllers/adminController");
+const adminMiddleware = require("../middlewares/adminMiddleware");
+
+//router object
 const router = express.Router();
 
-// get || donar list
+//Routes
+
+//GET || DONAR LIST
 router.get(
-    '/donar-list'
-,authMiddleware
-,getDonarrListController)
-
-// get || hospital list
+  "/donar-list",
+  authMiddelware,
+  adminMiddleware,
+  getDonarsListController
+);
+//GET || HOSPITAL LIST
 router.get(
-    '/hospital-list'
-,authMiddleware
-,getHospitalListController)
-
-// get || Org list
-router.get(
-    '/org-list'
-,authMiddleware
-,getOrgListController)
-
-
-
+  "/hospital-list",
+  authMiddelware,
+  adminMiddleware,
+  getHospitalListController
+);
+//GET || ORG LIST
+router.get("/org-list", authMiddelware, adminMiddleware, getOrgListController);
+// ==========================
 
 // DELETE DONAR || GET
+router.delete(
+  "/delete-donar/:id",
+  authMiddelware,
+  adminMiddleware,
+  deleteDonarController
+);
 
-router.delete('/delte-donar/:id',authMiddleware,adminMiddleware,deleteDonarController);
-// export
+//EXPORT
 module.exports = router;

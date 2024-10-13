@@ -1,19 +1,29 @@
-import React from 'react'
+import React from "react";
 
-const InputType = ({labeltext, labelfor ,inputtype,value,onChange,name}) => {
+const InputType = ({
+  labelText,
+  labelFor,
+  inputType,
+  value,
+  onChange,
+  name,
+}) => {
   return (
-    
-       <>
-       <div className="mb-1">
-    <label htmlFor={labelfor} className="form-label">{labeltext}
+    <>
+      <div className="mb-1">
+        <label htmlFor={labelFor} className="form-label">
+          {labelText}
+        </label>
+        <input
+          type={inputType}
+          className="form-control"
+          name={name}
+          value={value}
+          onChange={onChange}
+        />
+      </div>
+    </>
+  );
+};
 
-    </label>
-
-    <input type={inputtype} className="form-control" name={name} value = {value} onChange = {onChange} />
-      
-    </div>
-       </>
-  )
-}
-
-export default InputType
+export default InputType;

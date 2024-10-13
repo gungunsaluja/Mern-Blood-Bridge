@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Layout from "../../Component/shared/Layout/Layout";
 import { useSelector } from "react-redux";
 
 const AdminHome = () => {

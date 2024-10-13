@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/shared/Layout/Layout";
+import Layout from "../../Component/shared/Layout/Layout";
 import moment from "moment";
-import API from "../../services/API";
+import API from "../../Services/API";
 
 const HospitalList = () => {
   const [data, setData] = useState([]);
