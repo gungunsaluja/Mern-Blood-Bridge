@@ -1,5 +1,5 @@
 const express = require("express");
-const authMiddelware = require("../middlewares/authMiddelware");
+const authMiddelware = require("../middlewares/authMiddleware");
 const {
   createInventoryController,
   getInventoryController,
@@ -9,7 +9,7 @@ const {
   getOrgnaisationForHospitalController,
   getInventoryHospitalController,
   getRecentInventoryController,
-} = require("../controllers/inventoryController");
+} = require("../Controllers/inventoryContoller");
 
 const router = express.Router();
 

@@ -1,11 +1,11 @@
 const express = require("express");
-const authMiddelware = require("../middlewares/authMiddelware");
+const authMiddelware = require("../middlewares/authMiddleware");
 const {
   getDonarsListController,
   getHospitalListController,
   getOrgListController,
   deleteDonarController,
-} = require("../controllers/adminController");
+} = require("../Controllers/adminControllers");
 const adminMiddleware = require("../middlewares/adminMiddleware");
 
 //router object

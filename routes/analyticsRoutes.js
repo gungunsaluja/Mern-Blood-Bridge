@@ -1,8 +1,8 @@
 const express = require("express");
-const authMiddelware = require("../middlewares/authMiddelware");
+const authMiddelware = require("../middlewares/authMiddleware");
 const {
   bloodGroupDetailsContoller,
-} = require("../controllers/analyticsController");
+} = require("../Controllers/analyticsController");
 
 const router = express.Router();
 
